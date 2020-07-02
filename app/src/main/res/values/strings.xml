@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">MOEX_Search</string>
+    <string name="login">login</string>
+    <string name="email">email</string>
+    <string name="password">password</string>
+    <string name="wrong_credentials">Неправильные данные авторизации</string>
+</resources>
