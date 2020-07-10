@@ -1,4 +1,4 @@
-# Created by https://www.toptal.com/developers/gitignore/api/gradle,intellij+all,androidstudio,android,java
+# Created by https://www.toptal.com/developers/gitignore/loginApi/gradle,intellij+all,androidstudio,android,java
 # Edit at https://www.toptal.com/developers/gitignore?templates=gradle,intellij+all,androidstudio,android,java
 
 ### Android ###
@@ -317,4 +317,4 @@ Thumbs.db
 
 !/gradle/wrapper/gradle-wrapper.jar
 
-# End of https://www.toptal.com/developers/gitignore/api/gradle,intellij+all,androidstudio,android,java
+# End of https://www.toptal.com/developers/gitignore/loginApi/gradle,intellij+all,androidstudio,android,java

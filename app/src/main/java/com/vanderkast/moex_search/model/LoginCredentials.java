@@ -3,12 +3,12 @@ package com.vanderkast.moex_search.model;
 public class LoginCredentials {
     private String email;
     private String password;
-    private boolean save;
+    private boolean needSave;
 
-    public LoginCredentials(String email, String password, boolean save) {
+    public LoginCredentials(String email, String password, boolean needSave) {
         this.email = email;
         this.password = password;
-        this.save = save;
+        this.needSave = needSave;
     }
 
     public String getEmail() {
@@ -19,7 +19,7 @@ public class LoginCredentials {
         return password;
     }
 
-    public boolean isSave() {
-        return save;
+    public boolean isNeedSave() {
+        return needSave;
     }
 }

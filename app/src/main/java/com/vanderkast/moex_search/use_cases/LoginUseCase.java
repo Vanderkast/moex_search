@@ -28,4 +28,8 @@ public abstract class LoginUseCase {
     public static class WrongCredentials extends AuthException {
 
     }
+
+    public static class NetworkError extends  AuthException {
+
+    }
 }

@@ -1,7 +1,6 @@
 package com.vanderkast.moex_search.ui.login;
 
-import androidx.hilt.Assisted;
-import androidx.hilt.lifecycle.ViewModelInject;
+import android.os.AsyncTask;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
@@ -19,7 +18,7 @@ public class LoginViewModel extends ViewModel {
 
     private String email;
     private String password;
-    private boolean saveCredentials;
+    private boolean saveCredentials = true;
 
     private MutableLiveData<Result> result;
 
@@ -28,7 +27,30 @@ public class LoginViewModel extends ViewModel {
     }
 
     public void login() {
-        result.postValue(useCase.login(new LoginCredentials(email, password, saveCredentials)));
+        new LoginTask(result, useCase).execute(new LoginCredentials(email, password, saveCredentials));
+    }
+
+    private static class LoginTask extends AsyncTask<LoginCredentials, Void, Void> {
+        private final MutableLiveData<Result> liveData;
+        private final LoginUseCase loginUseCase;
+        private Result result;
+
+        private LoginTask(MutableLiveData<Result> liveData, LoginUseCase loginUseCase) {
+            this.liveData = liveData;
+            this.loginUseCase = loginUseCase;
+        }
+
+
+        @Override
+        protected Void doInBackground(LoginCredentials... loginCredentials) {
+            result = loginUseCase.login(loginCredentials[0]);
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            liveData.postValue(result);
+        }
     }
 
     public LiveData<Result> getResult() {

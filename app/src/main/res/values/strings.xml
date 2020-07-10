@@ -3,5 +3,9 @@
     <string name="login">login</string>
     <string name="email">email</string>
     <string name="password">password</string>
-    <string name="wrong_credentials">Неправильные данные авторизации</string>
+    <string name="wrong_credentials">Incorrect login credentials</string>
+    <string name="cant_save_login">Login data saving failed</string>
+    <string name="no_response_result">No response from system</string>
+    <string name="success">Успех</string>
+    <string name="save_login">stay signed-in</string>
 </resources>

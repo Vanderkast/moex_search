@@ -1,50 +1,61 @@
 package com.vanderkast.moex_search.controller;
 
-import com.vanderkast.moex_search.model.LoginCredentials;
-import com.vanderkast.moex_search.network.Api;
-import com.vanderkast.moex_search.use_cases.LoginUseCase;
-
-import javax.inject.Inject;
-
 import android.util.Base64;
-import retrofit2.Call;
-import retrofit2.Callback;
+import com.vanderkast.moex_search.model.LoginCredentials;
+import com.vanderkast.moex_search.network.LoginApi;
+import com.vanderkast.moex_search.use_cases.LoginUseCase;
 import retrofit2.Response;
 
+import javax.inject.Inject;
+import java.io.IOException;
+
 public class LoginController extends LoginUseCase {
-    private final Api api;
+    private final LoginApi loginApi;
+    private final SaveCredentialsGateway saveCredentialsGateway;
+    private final TokenKeeper.Provider tokenProvider;
 
     @Inject
-    public LoginController(Api api) {
-        this.api = api;
+    public LoginController(LoginApi loginApi, SaveCredentialsGateway saveCredentialsGateway, TokenKeeper.Provider tokenProvider) {
+        this.loginApi = loginApi;
+        this.saveCredentialsGateway = saveCredentialsGateway;
+        this.tokenProvider = tokenProvider;
     }
 
     @Override
     protected String authorize(LoginCredentials credentials) throws AuthException {
-        String data = "Basic " + new String(
-                Base64.encode((credentials.getEmail() + ":" + credentials.getPassword()).getBytes(),
-                        Base64.DEFAULT));
-        api.auth(data).enqueue(new Callback<String>() {
-            @Override
-            public void onResponse(Call<String> call, Response<String> response) {
-                if(response.code() == 200)
+        String data = constructCredentials(credentials.getEmail(), credentials.getPassword());
+        try {
+            Response<String> response = loginApi.auth(data).execute();
+            switch (response.code()) {
+                case 200:
+                    return response.body();
+                case 401:
+                    throw new WrongCredentials();
             }
+        } catch (IOException e) {
+            e.printStackTrace();
+            throw new NetworkError();
+        }
+        throw new NetworkError();
+    }
 
-            @Override
-            public void onFailure(Call<String> call, Throwable throwable) {
-
-            }
-        });
-        return null;
+    private String constructCredentials(String email, String password) {
+        return "Basic " + new String(
+                Base64.encode((email + ":" + password).getBytes(), Base64.DEFAULT)).trim();
     }
 
     @Override
     protected void saveCredentials(LoginCredentials credentials) {
-
+        if(credentials.isNeedSave())
+            saveCredentialsGateway.save(credentials.getEmail(), credentials.getPassword());
     }
 
     @Override
     protected void saveToken(String token) {
+        tokenProvider.put(token);
+    }
 
+    public interface SaveCredentialsGateway {
+        void save(String email, String password);
     }
 }
