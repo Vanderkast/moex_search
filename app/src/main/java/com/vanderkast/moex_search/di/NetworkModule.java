@@ -15,6 +15,7 @@ import okhttp3.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.converter.scalars.ScalarsConverterFactory;
+import retrofit2.converter.simplexml.SimpleXmlConverterFactory;
 
 import javax.inject.Inject;
 import java.io.IOException;
@@ -22,11 +23,12 @@ import java.io.IOException;
 @Module
 @InstallIn(ApplicationComponent.class)
 public class NetworkModule {
+    public static final String BASE_URL = "https://passport.moex.com/";
 
     @Provides
     LoginApi provideApi() {
         return new Retrofit.Builder()
-                .baseUrl("https://passport.moex.com/")
+                .baseUrl(BASE_URL)
                 .addConverterFactory(ScalarsConverterFactory.create())
                 .build()
                 .create(LoginApi.class);
@@ -36,8 +38,9 @@ public class NetworkModule {
     MainApi providesMainApi() {
         OkHttpClient client = new OkHttpClient.Builder().addNetworkInterceptor(new TokenInterceptor()).build();
 
-        return new Retrofit.Builder().baseUrl("https://passport.moex.com/")
-                .addConverterFactory(GsonConverterFactory.create())
+        return new Retrofit.Builder()
+                .baseUrl(BASE_URL)
+                .addConverterFactory(SimpleXmlConverterFactory.create())
                 .client(client)
                 .build()
                 .create(MainApi.class);

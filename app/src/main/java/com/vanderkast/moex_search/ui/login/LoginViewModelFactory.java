@@ -3,7 +3,7 @@ package com.vanderkast.moex_search.ui.login;
 import androidx.annotation.NonNull;
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
-import com.vanderkast.moex_search.use_cases.LoginUseCase;
+import com.vanderkast.moex_search.use_case.LoginUseCase;
 
 import javax.inject.Inject;
 

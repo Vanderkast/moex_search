@@ -1,4 +1,4 @@
-package com.vanderkast.moex_search.use_cases;
+package com.vanderkast.moex_search.use_case;
 
 import com.vanderkast.moex_search.model.LoginCredentials;
 import com.vanderkast.moex_search.model.Result;

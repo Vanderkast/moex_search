@@ -6,7 +6,7 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 import com.vanderkast.moex_search.model.LoginCredentials;
 import com.vanderkast.moex_search.model.Result;
-import com.vanderkast.moex_search.use_cases.LoginUseCase;
+import com.vanderkast.moex_search.use_case.LoginUseCase;
 
 /**
  * ViewModel injection problem:

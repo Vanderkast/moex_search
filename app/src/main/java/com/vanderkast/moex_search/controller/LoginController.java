@@ -3,7 +3,7 @@ package com.vanderkast.moex_search.controller;
 import android.util.Base64;
 import com.vanderkast.moex_search.model.LoginCredentials;
 import com.vanderkast.moex_search.network.LoginApi;
-import com.vanderkast.moex_search.use_cases.LoginUseCase;
+import com.vanderkast.moex_search.use_case.LoginUseCase;
 import retrofit2.Response;
 
 import javax.inject.Inject;

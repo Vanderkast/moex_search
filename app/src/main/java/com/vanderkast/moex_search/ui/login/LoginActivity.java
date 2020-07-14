@@ -11,7 +11,7 @@ import com.vanderkast.moex_search.R;
 import com.vanderkast.moex_search.helper.InteractiveActivity;
 import com.vanderkast.moex_search.model.Result;
 import com.vanderkast.moex_search.ui.MainActivity;
-import com.vanderkast.moex_search.use_cases.LoginUseCase;
+import com.vanderkast.moex_search.use_case.LoginUseCase;
 import dagger.hilt.android.AndroidEntryPoint;
 
 import javax.inject.Inject;

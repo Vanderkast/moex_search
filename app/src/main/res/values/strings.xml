@@ -8,4 +8,7 @@
     <string name="no_response_result">No response from system</string>
     <string name="success">Успех</string>
     <string name="save_login">stay signed-in</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
