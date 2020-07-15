@@ -4,7 +4,7 @@ import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Root;
 
 @Root(name = "row")
-public class Stock {
+public class StockNetwork {
     @Attribute(name = "SECID")
     private final String securityId;
 
@@ -23,7 +23,7 @@ public class Stock {
     @Attribute(name = "LATNAME")
     private final String latinName;
 
-    public Stock(String securityId, String boardId, String shortName, String previewPrice, String name, String latinName) {
+    public StockNetwork(String securityId, String boardId, String shortName, String previewPrice, String name, String latinName) {
         this.securityId = securityId;
         this.boardId = boardId;
         this.shortName = shortName;
