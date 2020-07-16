@@ -17,7 +17,7 @@ public abstract class StockUseCases {
         loadingFuture = new CompletableFuture<>();
     }
 
-    Future<Set<Stock>> getAll() {
+    public Future<Set<Stock>> getAll() {
         if(!loadingStarted) {
             loadAll(loadingFuture::complete);
             loadingStarted = true;

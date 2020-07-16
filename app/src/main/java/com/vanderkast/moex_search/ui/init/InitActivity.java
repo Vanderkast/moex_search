@@ -1,7 +1,6 @@
 package com.vanderkast.moex_search.ui.init;
 
 import android.content.Intent;
-import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import androidx.lifecycle.ViewModelProvider;
 import com.google.android.gms.auth.api.credentials.Credential;

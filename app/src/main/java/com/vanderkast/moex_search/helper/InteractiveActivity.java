@@ -12,6 +12,7 @@ import com.google.android.gms.auth.api.credentials.Credentials;
 import com.google.android.gms.auth.api.credentials.CredentialsClient;
 import com.google.android.gms.common.api.ResolvableApiException;
 import com.vanderkast.moex_search.R;
+import dagger.hilt.android.AndroidEntryPoint;
 
 import javax.inject.Inject;
 
@@ -52,9 +53,11 @@ public abstract class InteractiveActivity extends AppCompatActivity {
                     rae.startResolutionForResult(this, SAVE_CREDENTIALS_REQUEST_CODE);
                 } catch (IntentSender.SendIntentException ex) {
                     Toast.makeText(this, getString(R.string.cant_save_login), Toast.LENGTH_SHORT).show();
+                    e.printStackTrace();
                 }
             } else
                 Toast.makeText(this, getString(R.string.cant_save_login), Toast.LENGTH_SHORT).show();
+            interact.push(null);
         });
     }
 

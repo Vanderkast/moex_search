@@ -3,56 +3,71 @@ package com.vanderkast.moex_search.network.model;
 import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Root;
 
-@Root(name = "row")
+@Root(name = "row", strict = false)
 public class StockNetwork {
     @Attribute(name = "SECID")
-    private final String securityId;
+    private String securityId;
 
     @Attribute(name = "BOARDID")
-    private final String boardId;
+    private String boardId;
 
     @Attribute(name = "SHORTNAME")
-    private final String shortName;
+    private String shortName;
 
     @Attribute(name = "PREVPRICE")
-    private final String previewPrice;
+    private String previewPrice;
 
     @Attribute(name = "SECNAME")
-    private final String name;
+    private String name;
 
     @Attribute(name = "LATNAME")
-    private final String latinName;
-
-    public StockNetwork(String securityId, String boardId, String shortName, String previewPrice, String name, String latinName) {
-        this.securityId = securityId;
-        this.boardId = boardId;
-        this.shortName = shortName;
-        this.previewPrice = previewPrice;
-        this.name = name;
-        this.latinName = latinName;
-    }
+    private String latinName;
 
     public String getSecurityId() {
         return securityId;
+    }
+
+    public void setSecurityId(String securityId) {
+        this.securityId = securityId;
     }
 
     public String getBoardId() {
         return boardId;
     }
 
+    public void setBoardId(String boardId) {
+        this.boardId = boardId;
+    }
+
     public String getShortName() {
         return shortName;
+    }
+
+    public void setShortName(String shortName) {
+        this.shortName = shortName;
     }
 
     public String getPreviewPrice() {
         return previewPrice;
     }
 
+    public void setPreviewPrice(String previewPrice) {
+        this.previewPrice = previewPrice;
+    }
+
     public String getName() {
         return name;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public String getLatinName() {
         return latinName;
+    }
+
+    public void setLatinName(String latinName) {
+        this.latinName = latinName;
     }
 }

@@ -19,8 +19,7 @@ public class LoginViewModelFactory implements ViewModelProvider.Factory {
     @Override
     public <T extends ViewModel> T create(@NonNull Class<T> modelClass) {
         if(modelClass.equals(LoginViewModel.class)){
-            LoginViewModel viewModel = new LoginViewModel();
-            viewModel.useCase = loginUseCase;
+            LoginViewModel viewModel = new LoginViewModel(loginUseCase);
             return (T) viewModel;
         }
         return new ViewModelProvider.NewInstanceFactory().create(modelClass);

@@ -14,7 +14,7 @@ import com.vanderkast.moex_search.use_case.LoginUseCase;
  * but it's not working.
  */
 public class LoginViewModel extends ViewModel {
-    LoginUseCase useCase;
+    private final LoginUseCase useCase;
 
     private String email;
     private String password;
@@ -22,7 +22,8 @@ public class LoginViewModel extends ViewModel {
 
     private MutableLiveData<Result> result;
 
-    public LoginViewModel() {
+    public LoginViewModel(LoginUseCase useCase) {
+        this.useCase = useCase;
         result = new MutableLiveData<>();
     }
 

@@ -1,13 +1,15 @@
 package com.vanderkast.moex_search.network.model;
 
 import org.simpleframework.xml.ElementList;
+import org.simpleframework.xml.Path;
 import org.simpleframework.xml.Root;
 
 import java.util.List;
 
-@Root(name = "document")
+@Root(strict = false)
 public class StockResponse {
-    @ElementList(name = "rows")
+    @Path("data")
+    @ElementList(name = "rows", type = StockNetwork.class)
     private List<StockNetwork> stockList;
 
     public List<StockNetwork> getStockList() {
