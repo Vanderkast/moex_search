@@ -6,11 +6,11 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         tools:context=".ui.MainActivity">
-
+    <!--android:name="com.vanderkast.moex_search.ui.stocks.StockListFragment"-->
     <androidx.fragment.app.FragmentContainerView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:name="com.vanderkast.moex_search.ui.stocks.StockListFragment"
+
             android:id="@+id/stock_list_fragment"/>
 
 </LinearLayout>

@@ -1,9 +1,7 @@
 package com.vanderkast.moex_search.use_case;
 
-import androidx.annotation.NonNull;
 import com.vanderkast.moex_search.entity.Stock;
 
-import java.util.HashSet;
 import java.util.Set;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.Future;

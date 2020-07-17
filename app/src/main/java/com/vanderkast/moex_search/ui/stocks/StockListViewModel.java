@@ -15,6 +15,7 @@ import java.util.function.Consumer;
 public class StockListViewModel extends ViewModel {
     private final StockUseCases stockUseCases;
     private MutableLiveData<Set<Stock>> stockLiveData;
+    private volatile boolean loadStarted;
 
     @Inject
     public StockListViewModel(StockUseCases stockUseCases) {
@@ -22,9 +23,11 @@ public class StockListViewModel extends ViewModel {
         stockLiveData = new MutableLiveData<>();
     }
 
-    public LiveData<Set<Stock>> getStockLiveData() {
-        if(stockLiveData.getValue() == null)
+    public synchronized LiveData<Set<Stock>> getStockLiveData() {
+        if(stockLiveData.getValue() == null && !loadStarted) {
+            loadStarted = true;
             new Logic(stockUseCases, this.stockLiveData::setValue).execute();
+        }
         return stockLiveData;
     }
 

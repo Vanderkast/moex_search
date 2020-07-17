@@ -27,7 +27,8 @@ public class StockListConstraintAdapter extends RecyclerView.Adapter<StockListCo
     @NonNull
     @Override
     public StockView onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new StockView(LayoutInflater.from(parent.getContext()).inflate(R.layout.stock_item_view, parent, false));
+        return new StockView(
+                LayoutInflater.from(parent.getContext()).inflate(R.layout.stock_item_view, parent, false));
     }
 
     @Override
