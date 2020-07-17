@@ -43,19 +43,19 @@ public class StockListConstraintAdapter extends RecyclerView.Adapter<StockListCo
 
     static class StockView extends RecyclerView.ViewHolder {
         TextView name;
-        TextView boardId;
+        TextView securityId;
         TextView price;
 
         public StockView(@NonNull View itemView) {
             super(itemView);
             name = itemView.findViewById(R.id.stock_name_text);
-            boardId = itemView.findViewById(R.id.stock_board_id_text);
+            securityId = itemView.findViewById(R.id.stock_security_id_text);
             price = itemView.findViewById(R.id.stock_preview_value_text);
         }
 
         public void setUp(Stock stock) {
             name.setText(stock.getName());
-            boardId.setText(stock.getBoardId());
+            securityId.setText(stock.getSecurityId());
             price.setText(stock.getPreviewValue());
         }
     }

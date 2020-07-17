@@ -32,7 +32,7 @@
                     android:text="@string/mock"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/stock_board_id_text"
+                    android:id="@+id/stock_security_id_text"
                     android:layout_marginBottom="4dp"
             />
         </LinearLayout>

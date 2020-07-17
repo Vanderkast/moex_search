@@ -33,6 +33,9 @@ public class StocksController extends StockUseCases {
     }
 
     private Stock map(StockNetwork stockNetwork) {
-        return new Stock(stockNetwork.getName(), stockNetwork.getPreviewPrice(), stockNetwork.getBoardId());
+        return new Stock(stockNetwork.getName(),
+                stockNetwork.getPreviewPrice(),
+                stockNetwork.getBoardId(),
+                stockNetwork.getSecurityId());
     }
 }
